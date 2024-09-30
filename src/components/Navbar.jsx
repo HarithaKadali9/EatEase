@@ -8,6 +8,11 @@ const Navbar = ({ toggleCartVisibility }) => {
 
   const handleNav = () => {
     setNav(!nav);
+    if (!nav) {
+      document.body.classList.add('overflow-hidden');
+    } else {
+      document.body.classList.remove('overflow-hidden');
+    }
   };
   const handleHomeClick = () => {
     navigate('/'); // Navigate to the home page
@@ -62,7 +67,7 @@ const Navbar = ({ toggleCartVisibility }) => {
       <div onClick={handleNav} className='block md:hidden mr-6 z-20'>
         {nav ? <AiOutlineClose size={20} /> : <AiOutlineMenu size={20} />}
       </div>
-      <div className={nav ? 'z-10 fixed right-0 h-full top-[120px] w-full ease-in-out duration-500' : 'fixed top-[-100%]'}>
+      <div className={nav ? 'z-30 fixed right-0 h-full top-[120px] w-full ease-in-out duration-500' : 'fixed top-[-100%]'}>
         <ul className='p-8 text-2xl w-full bg-primary-color rounded-lg text-white'>
         <li className='p-5'><a href='#' onClick={handleHomeClick}>Home</a></li>
           <li className='p-5'><a href='#food'>Food</a></li>
